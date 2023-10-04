@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="The Australian Census Questionnaire">
+      <meta name="author" content="James McCann">
+      <script src="./CensusPage.js" defer></script>
+      <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <title>The Australian Census Questionnaire</title>
+      <link rel="icon" type="image/x-icon" href="https://tau.usq.edu.au/courses/CSC2406/Assignments/ABS_Logo.svg">
+      <link rel="stylesheet" title="Site Style" href="./CensusPage.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <script src="./CensusPage.js"></script>
+    <header>
+      <div class="wrapper">
+        <div id="logo">
+          <!--This anchor element is used to specifiy where the the CSS file is. The parser will then load the CSS file. -->
+          <a href="./CensusPage.html">
+            <!--The image source element is used to retreieve the logo file and display it on the website as the icon.-->
+            <img src="https://tau.usq.edu.au/courses/CSC2406/Assignments/ABS_Logo.svg" alt="Census logo" title="Census logo" width="250" height="150">
+          </a>
+        </div>
+      </div>
+    <!--Container: Title with 'top of page' id used for top of page anchor in the footer-->
+      <div class="container">
+        <div id="banner">
+          <h1 id="top">The Australian Census Questionnaire</h1>
+        </div>
+        </div>
+        <br>
+        <div class="step-row">
+            <div id="progress"></div>
+            <div class="step-col"><small>Address</small></div>
+            <div class="step-col"><small>Part 1</small></div>
+            <div class="step-col"><small>Part 2</small></div>
+            <div class="step-col"><small>Part 3</small></div>
+            <div class="step-col"><small>Part 4</small></div>
+        </div>
+    </header>
+    <!--Accordion section (collapsible) - Address of dwelling section of form-->
+    <section id="address">
+      <div class="accordion">
+        <form action="https://tau.usq.edu.au/courses/CSC2406/reflect.php" method="POST" enctypre="multipart/form-data" onsubmit="return validate()" for="form" name="form">
+            <!--The accordion is used to create a collapsible section for the form. It has a checkbox that is hidden by CSS to make it look better.-->
+            <input type="checkbox" example_accordion" id="sectionAddress" class="accordion__input">
+            <label for="sectionAddress" class="accordion__label"><h1>Address of the dwelling</h1></label>
+            <div class="accordion__content">
+                <label><b>Help?</b>
+                    <!--All help is used as a checkbox to allow the user to toggle help on and off at each question.-->
+                    <input type="checkbox" name="Help street number" id="HelpStreetNumberYes" onclick="showHideHelpStreetNumber()"/>Yes
+                </label>
+                <!--All help is hidden until the "Help" checkbox is selected by the user.-->
+                <p class="hiddenHelpStreetNumber"><B>Help:</B><i> Enter your street number here. You are only able to use numbers in this section. You must enter a number higher than 1 but less than 999.</i></p>
+                <h4>Street number: 
+                <!--The "number" input tag is used here to assist in validation by only allowing the user to input numbers and no other characters.-->
+                    <input type="number" name="Street number" pattern="[0-9]+" min=1 max=999 required="required" autocomplete="off" placeholder="Numbers only" width="100" size="100">
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" name="Help street name" id="HelpStreetNameYes" onclick="showHideHelpStreetName()"/>Yes
+                </label>
+                <p class="hiddenHelpStreetName"><B>Help:</B><i> Enter your street name here. You are only able to input letters in this section. You must enter a minimum of 5 and a maximum of 30 letters.</i></p>
+                <h4>Street name: 
+                    <!--The "text" input tag is used here to assist in validation by only allowing the user to input text and no other characters (numbers).-->
+                    <input type="text" name="Street name" placeholder="Enter the street name" minlength="5" maxlength="30" required="required" size="40"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" name="Help apartment" id="HelpApartmentYes" onclick="showHideHelpApartment()"/>Yes
+                </label>
+                <p class="hiddenHelpApartment"><B>Help:</B><i> If this property is an apartment then select "Yes". If not, select "No". When you select "Yes" you will be required to enter your apartment number.</i></p>
+                <h4>Is this property an apartment?</h4>
+                <!--The "radio" input tag is used here to get a boolean (true/ false) answer out of the user. The radio is better on this occasion as the user can either select "Yes" or "No" and not both at the same time.-->
+                    <input type="radio" name="Apartment" id="chkYes" required="required" onclick="showHideApartment()"/><b>Yes</b>
+                    <input type="radio" name="Apartment" id="chkNo" required="required" onclick="showHideApartment()"/><b>No</b>
+                <br>
+                <!--If the user selects that they do have an apartment then the following help and question will show. If they select "No" then it will remain hidden-->
+                <label class="hidden"><b>Help?</b>
+                    <input type="checkbox" name="Help apartment number" id="HelpApartmentNumberYes" onclick="showHideHelpApartmentNumber()"/>Yes
+                </label>
+                <p class="hiddenHelpApartmentNumber"><B>Help:</B><i> Enter in your apartment number. This must be a number between 1 and 999.</i></p>
+                <h4 class="hidden">Apartment number: 
+                    <input class="hidden" type="number" id="number" name="Apartment number" pattern="[0-9]+" min=1 max=999 placeholder="Enter apartment number - numbers only" size=40/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpSuburbYes" onclick="showHideHelpSuburb()"/>Yes
+                </label>
+                <p class="hiddenHelpSuburb"><B>Help:</B><i> Enter the suburb in which this property is located in here. You are only able to input letters in this section. You must enter a minimum of 5 and a maximum of 30 letters.</i></p>
+                <h4>Suburb: 
+                    <input type="text" name="Suburb" required="required" minlength="5" maxlength="30" placeholder="Enter the suburb" size="40"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpCityYes" onclick="showHideHelpCity()"/>Yes
+                </label>
+                <p class="hiddenHelpCity"><B>Help:</B><i> Enter the city in which this property is located here. You are only able to input letters in this section. You must enter a minimum of 5 and a maximum of 30 letters.</i></p>
+                <h4>City: 
+                    <input type="text" name="City" required="required" minlength="5" maxlength="30" placeholder="Enter the city" size="40"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpPostcodeYes" onclick="showHideHelpPostcode()"/>Yes
+                </label>
+                <p class="hiddenHelpPostcode"><B>Help:</B><i> Enter the postcode in which this property is located in here. You are only able to input numbers in this section. You must enter a minimum of 1111 and a maximum of 9999 letters.</i></p>
+                <h4>Postcode: 
+                    <input type="number" name="Postcode" pattern="[0-9]+" min=1111 max=9999 required="required" placeholder="Numbers only"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpStateYes" onclick="showHideHelpState()"/>Yes
+                </label>
+                <p class="hiddenHelpState"><B>Help:</B><i> Enter the state in which this property is located in. You are only able to input letters in this section. You must enter a minimum of 2 and a maximum of 30 letters.</i></p>
+                <h4>State: 
+                    <input type="text" name="State" required="required" minlength="2" maxlength="30" placeholder="Enter the state" size="40"/>
+                </h4>
+                <br>
+                <!--This submit button is used for validation. When the user finishes the section they can press submit and all errors will show if they have not filled in the section correctly. The progress bar will be updated also to show that they have completed part 1.-->
+                <div class="btn-box">
+                    <button type="submit" name="nextadd" id="nextadd">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!--Accordion section (collapsible) - Part 1. "People" section of form-->
+    <section id="people">
+        <div class="accordion">
+          <input type="checkbox" example_accordion" id="section1" class="accordion__input">
+            <label for="section1" class="accordion__label"><h1>Part 1. People in the dwelling</h1></label>
+            <div class="accordion__content">
+                <label><b>Help? </b>
+                    <input type="checkbox" id="HelpPeopleYes" onclick="showHideHelpPeople()"/>Yes
+                </label>
+                <p class="hiddenHelpPeople"><B>Help:</B><i> On the given night of the census, how many people were living in this property. This does not include guests.</i></p>
+                <br>
+                <h4>How many people spent the night at the census dwelling?</h4>
+                    <input type="number" name="People in dwelling" pattern="[0-9]+" min=1 max=15 required="required" placeholder="Numbers only" size="40"/><br>
+                <br>
+                <!--Each person must open a new form and fill out their details. Anchor tag used to link to new form.-->
+                <h4>For each person you must fill out a seperate form. People can be of any age. You must enter the same dwelling address and details for each person that lives here.</h4>
+                <label>Follow the link here to enter the next person's details: </label><a href="./CensusPageNew.html">Next person</a><br>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpGivenNameYes" onclick="showHideHelpGivenName()"/>Yes
+                </label>
+                <p class="hiddenHelpGivenName"><B>Help:</B><i> Enter in only your first name here. You are only able to input letters in this section. You must enter a minimum of 2 and a maximum of 30 letters.</i></p>
+                <h4>Given name: 
+                    <input type="text" name="Given name" required="required" minlength="2" maxlength="30" placeholder="Enter your first name" size="40"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpFamilyNameYes" onclick="showHideHelpFamilyName()"/>Yes
+                </label>
+                <p class="hiddenHelpFamilyName"><B>Help:</B><i> Enter in only your family name here. You are only able to input letters in this section. You must enter a minimum of 2 and a maximum of 30 letters.</i></p>
+                <h4>Family name: 
+                    <input type="text" name="Family name" required="required" minlength="2" maxlength="30" placeholder="Enter your last name" size="40"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpGenderYes" onclick="showHideHelpGender()"/>Yes
+                </label>
+                <p class="hiddenHelpGender"><B>Help:</B><i> Select your gender here. You cannot leave this section blank.</i></p>
+                <h4>Gender:
+                <!--Users must select their gender. This cannot be left on "select" as the javascript function will return this value as false and the form cannot be completed.-->
+                <select name="Gender" id="gender" required="required">
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpDoBYes" onclick="showHideHelpDoB()"/>Yes
+                </label>
+                <p class="hiddenHelpDoB"><B>Help:</B><i> Enter in your date of birth here. You can not enter a date before 29/9/1910 because that would  make you 110 years old. You must also enter a date that is past the 27/9/2022.</i></p>
+                <h4>Date of Birth: 
+                    <input type="date" name="Date of birth" min="1910-09-27" max="2022-09-27" required="required"/>
+                </h4>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpBornAustraliaYes" onclick="showHideHelpBornAustralia()"/>Yes
+                </label>
+                <!--This is a dynamic section in the form. If the user was not born in Australia then they will select "No" which will open up a bunch of new questions that the user needs to fill out.-->
+                <p class="hiddenHelpBornAustralia"><B>Help:</B><i> If you are born in Australia, select "Yes" and proceed to the next question. If you were not born in Australia, select "No" and proceed with the extra questions.</i></p>
+                <h4>Was this person born in Australia? </h4>
+                <input type="radio" name="Born in Australia" id="checkYes" required="required" onclick="showHideBornAustralia()"/><b>Yes</b>
+                <input type="radio" name="Born in Australia" id="checkNo" required="required" onclick="showHideBornAustralia()"/><b>No</b>
+                <br>
+                <label class="hidden2"><b>Help?</b>
+                    <input type="checkbox" id="HelpBornCountryYes" onclick="showHideHelpBornCountry()"/>Yes
+                </label>
+                <p class="hiddenHelpBornCountry"><B>Help:</B><i> If you were not born in Australia, select which country you were born in below. If your country did not show up in the drop down box then enter it in manually.</i></p>
+                <h4 class="hidden2">What country was this person born in? </h4>
+                <select class="hidden2" name="Country of birth" id="CountryOfBirth">
+                    <option value="Select">Select</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Solomon Islands">Solomon Islands</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Philippines">Philippines</option>
+                </select>
+                <h4 class="hidden2">Other: 
+                    <input type="text" name="other" placeholder="Enter your country of birth" size="40"/>
+                </h4>
+                <br>
+                <label class="hidden2"><b>Help?</b>
+                    <input type="checkbox" id="HelpArrivalYes" onclick="showHideHelpArrival()"/>Yes
+                </label>
+                <p class="hiddenHelpArrival"><B>Help:</B><i> If you were born overseas, enter in the date that you arrived in Australia below. You can not enter a date before 29/9/1910 because that would  make you 110 years old. You must also enter a date that is past the 27/9/2022.</i></p>
+                <h4 class="hidden2">If born overseas, what year did this person arrive in Australia? </h4>
+                    <input class="hidden2" type="date" name="Date of arrival in Australia" min="1910-09-27" max="2022-09-27" id="Date of arrival in Australia"/>
+                <br>
+                <label class="hidden2"><b>Help?</b>
+                    <input type="checkbox" id="HelpCitizenYes" onclick="showHideHelpCitizen()"/>Yes
+                </label>
+                <p class="hiddenHelpCitizen"><B>Help:</B><i> Does this person have the legal documentation to prove they are an Australian citizen?</i></p>
+                <h4 class="hidden2">Is this person an Australian citizen? </h4>
+                    <label class="hidden2"><input class="hidden2" type="radio" name="Australian citizen?" value="Yes"/>Yes</label>
+                    <label class="hidden2"><input class="hidden2" type="radio" name="Australian citizen?" value="No"/>No</label>
+                <br>
+                <label class="hidden2"><b>Help?</b>
+                    <input type="checkbox" id="HelpLanguageYes" onclick="showHideHelpLanguage()"/>Yes
+                </label>
+                <p class="hiddenHelpLanguage"><B>Help:</B><i> Does this person speak another language well that is not English?</i></p>
+                <h4 class="hidden2">Does this person speak another language other than English?</h4>
+                <select class="hidden2" name="Language spoken" id="language">
+                    <option value="English only">English only</option>
+                    <option value="Mandarin">Mandarin</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="Cantonese">Cantonese</option>
+                    <option value="Greek">Greek</option>
+                    <label class="hidden2">Other: 
+                        <input class="hidden2" type="text" name="other" placeholder="Enter the language you speak" size="40"/>
+                    </label>
+                </select>
+                <br>
+                <label class="hidden2"><b>Help?</b>
+                    <input type="checkbox" id="HelpEnglishWellYes" onclick="showHideHelpEnglishWell()"/>Yes
+                </label>
+                <p class="hiddenHelpEnglishWell"><B>Help:</B><i> Does this person speak English well? Can they understand spoken and written English well enough?</i></p>
+                <h4 class="hidden2">How well does this person speak English?</h4>
+                <select class="hidden2" name="English langauge proficiency" id="proficiency">
+                    <option value="Very well">Very well</option>
+                    <option value="Well">Well</option>
+                    <option value="Not well">Not well</option>
+                    <option value="Not at all">Not at all</option>
+                </select>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpSchoolYes" onclick="showHideHelpSchool()"/>Yes
+                </label>
+                <p class="hiddenHelpSchool"><B>Help:</B><i> What is the highest level of school you have officially completed. This can either be in your school years or if you went back to complete school later.</i></p>
+                <h4>What is the highest year of secondary school this person has completed?</h4>
+                <select name="Highest_school_level_completed" id="school" required="required">
+                    <option value="">Select</option>
+                    <option value="Year 12">Year 12</option>
+                    <option value="Year 11">Year 11</option>
+                    <option value="Year 10">Year 10</option>
+                    <option value="Year 9">Year 9</option>
+                    <option value="Year 8">Year 8</option>
+                    <option value="Year 7">Year 7</option>
+                    <option value="Did not go to High School">Did not go to High School</option>
+                </select>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpQualificationYes" onclick="showHideHelpQualification()"/>Yes
+                </label>
+                <p class="hiddenHelpQualification"><B>Help:</B><i> What is the highest recognised qualification that you have completed? International equivelant qualifications are an accepted answer.</i></p>
+                <h4>What is the highest qualification this person has received?</h4>
+                <select name="Highest_qualification_achieved" id="qualification" required="required">
+                    <option value="">Select</option>
+                    <option value="PhD">PhD</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Bachelor Degree">Bachelor Degree</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Associate Diploma">Associate Diploma</option>
+                    <option value="Cert.IV">Cert.IV</option>
+                    <option value="Cert.III">Cert.III</option>
+                    <option value="Cert.II">Cert.II</option>
+                    <option value="Cert.I">Cert.I</option>
+                    <option value="Trade Certificate">Trade Certificate</option>
+                    <option value="None">None</option>
+                </select>
+                <br>
+                <label><b>Help?</b>
+                    <input type="checkbox" id="HelpFieldYes" onclick="showHideHelpField()"/>Yes
+                </label>
+                <p class="hiddenHelpField"><B>Help:</B><i> Following on from the previous question, what is the main field of study of this qualification? For example - A "PhD" could put "Medicine" and a "Masters" could put "Mathematics". If you do not have a qualification then type NA.</i></p>
+                <h4>What is the main field of study for this qualification?</h4>
+                    <label>Field of study: 
+                        <input type="text" name="Qualification field" required="required" size="40"/>
+                    </label>
+                <br>
+                <div class="btn-box">
+                    <button type="submit" name="next1" id="next1">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Accordion section (collapsible) - Part 2 "The dwelling" section of form-->
+    <section id="dwelling">
+      <div class="accordion">
+        <input type="checkbox" example_accordion" id="section2" class="accordion__input">
+        <label for="section2" class="accordion__label">
+            <h1>Part 2. The dwelling</h1>
+        </label>
+        <div class="accordion__content">
+            <label><b>Help?</b>
+                <input type="checkbox" id="HelpDwellingTypeYes" onclick="showHideHelpDwellingType()"/>Yes
+            </label>
+            <p class="hiddenHelpDwellingType"><B>Help: </B><i>What kind of dwelling is this? How would you describe it? Select the option that is the most accurate description of this type of dwelling.</i></p>
+            <h4>What type of dwelling is this?</h4>
+            <select name="Type_of_dwelling" id="dwellingType" required="required">
+                <option value="">Select</option>
+                <option value="Detached house">Detached house</option>
+                <option value="Semi-detached house">Semi-detached house</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Retirement home">Retirement home</option>
+                <option value="Caravan">Caravan</option>
+                <option value="Houseboat">Houseboat</option>
+                <option value="Boat">Boat</option>
+                <option value="Tent">Tent</option>
+            </select>
+            <br>
+            <label><b>Help?</b>
+                <input type="checkbox" id="HelpDwellingFinanceYes" onclick="showHideHelpDwellingFinance()"/>Yes
+            </label>
+            <p class="hiddenHelpDwellingFinance"><B>Help: </B><i>What is the financial situation like at this dwelling? Select which is the most accurate way to describe the finances of this dwelling.</i></p>
+            <h4>What is the financial situation with this Dwelling?</h4>
+            <select name="Dwellings_financial_situation" id="dwellingFincance" required="required">
+                <option value="">Select</option>
+                <option value="Owned outright">Owned outright</option>
+                <option value="Owned with mortgage">Owned with mortgage</option>
+                <option value="Rented">Rented</option>
+                <option value="Rent-free">Rent-free</option>
+            </select>
+            <br>
+            <label><b>Help?</b>
+                <input type="checkbox" id="HelpEnergySourceYes" onclick="showHideEnergySource()"/>Yes
+            </label>
+            <p class="hiddenHelpEnergySource"><B>Help: </B><i>What is the main energy source for this dwelling? You can only select one so if you have more than one you must select your primary source.</i></p>
+            <h4>Sources of energy for the Dwelling:</h4>
+            <select name="Dwellings_energy_source" id="dwellingEnergy" required="required">
+                <option value="">Select</option>
+                <option value="Mains">Mains</option>
+                <option value="Solar">Solar</option>
+                <option value="Battery">Battery</option>
+                <option value="Gas">Gas</option>
+                <option value="No power source">No power source</option>
+            </select>
+            <br>
+            <!--This is a dynamic section in the form.-->
+            <label><b>Help?</b>
+                <input type="checkbox" id="HelpInternetAccessYes" onclick="showHideInternetAccessHelp()"/>Yes
+            </label>
+            <p class="hiddenHelpInternetAccess"><B>Help: </B><i>Do you recieve internet access at this dwelling? This is for paid broadband services and not cellular coverage.</i></p>
+            <h4>Does this dwelling have internet access? </h4>
+            <input type="radio" name="Internet access?" id="yes" required="required" onclick="showHideInternetAccess()"/><b>Yes</b>
+            <input type="radio" name="Internet access?" id="no" required="required" onclick="showHideInternetAccess()"/><b>No</b>
+            <br>
+            <label class="hidden3"><b>Help?</b>
+                <input type="checkbox" id="HelpHowInternetAccessYes" onclick="showHideHowInternetAccess()"/>Yes
+            </label>
+            <p class="HelpHowInternetAccessYes"><B>Help: </B><i>How do you recieve your internet access? If you are unsure, you may need to check with your provider.</i></p>
+            <h4 class="hidden3">Internet access type for the dwelling:</h4>
+            <select class="hidden3" name="Dwellings_internet_access" id="dwellingInternet">
+                <option value="">Select</option>
+                <option value="Fibre to the house">Fibre to the house</option>
+                <option value="Fibre to the curb">Fibre to the curb</option>
+                <option value="Fibre to the node">Fibre to the node</option>
+                <option value="Fixed wireless">Fixed wireless</option>
+                <option value="ADSL">ADSL</option>
+                <option value="Mobile Broadband">Mobile Broadband</option>
+            </select>
+            <br>
+            <label class="hidden3"><b>Help?</b>
+                <input type="checkbox" id="HelpDownloadYes" onclick="showHideDownload()"/>Yes
+            </label>
+            <p class="hiddenHelpDownload"><B>Help: </B><i>What is your average monthly internet download? You are able to check this by contacting your internet service provider.</i></p>
+            <h4 class="hidden3">Average monthly internet download (Gigabytes): </h4>
+                <input class="hidden3" type="number" name="Dwelling's monthly internet usage (GB)" pattern="[0-9]+" placeholder="Numbers only"/>
+            <br>
+            <label class="hidden3"><b>Help?</b>
+                <input type="checkbox" id="HelpBedroomYes" onclick="showHideBedroom()"/>Yes
+            </label>
+            <p class="hiddenHelpBedroom"><B>Help: </B><i>How many bedrooms are in this dwelling? This includes studio apartments which will be classed as 1 bedroom.</i></p>
+            <h4>How many bedrooms are in the Dwelling? </h4>
+                <input type="number" name="Bedrooms in dwelling" pattern="[0-9]+" required="required" placeholder="Numbers only"/>
+            <br>
+            <!--This is a dynamic section in the form.-->
+            <label class="hidden3"><b>Help?</b>
+                <input type="checkbox" id="HelpEvYes" onclick="showHideEv()"/>Yes
+            </label>
+            <p class="hiddenHelpEv"><B>Help: </B><i>Does this dwelling store electric vehicles of any kind? Electric vehicles do include hybrid vehicles - (petrol + electric motor powered vehicles).</i></p>
+            <h4>Are there any electric vehicles garaged at the dwelling?</h4>
+            <input type="radio" name="Electric vehicles garaged in dwelling?" id="evYes" required="required" onclick="showHideEvGaraged()"/><b>Yes</b>
+            <input type="radio" name="Electric vehicles garaged in dwelling?" id="evNo" required="required" onclick="showHideEvGaraged()"/><b>No</b>
+            <br>
+            <label class="hidden4"><b>Help?</b>
+                <input type="checkbox" id="HelpEvTypeYes" onclick="showHideEvType()"/>Yes
+            </label>
+            <p class="hiddenHelpEvTypeYes"><B>Help: </B><i>What type of vehicle is this electric vehicle? If you have a car, then what type of car is it?</i></p>
+            <h4 class="hidden4">What type of vehicle is it?</h4>
+            <select class="hidden4" name="Electric vehicle type" id="evType">
+                <option value="No input">Select</option>
+                <option value="Car">Car</option>
+                <option value="Hybrid-car">Hybrid-car</option>
+                <option value="SUV">SUV</option>
+                <option value="Hybrid-SUV">Hybrid-SUV</option>
+                <option value="Truck">Truck</option>
+                <option value="Hybrid-truck">Hybrid-truck</option>
+                <option value="Scooter">Scooter</option>
+                <option value="Motorcycle">Motorcycle</option>
+            </select>
+        <div class="btn-box">
+            <button type="submit" name="next2" id="next2">Next</button>
+            </div>
+        </div>
+       </div>
+    </section> 
+    <!--Accordion section (collapsible) - Part 3. "Animals" section of form-->
+    <section id="animals">
+      <div class="accordion">
+        <div>
+         <input type="checkbox" example_accordion" id="section3" class="accordion__input">
+         <label for="section3" class="accordion__label">
+            <h1>Part 3. Animals in the dwelling</h1>
+         </label>
+         <div class="accordion__content">
+            <label><b>Help?</b>
+                <input type="checkbox" id="HelpAnimalsYes" onclick="showHideHelpAnimals()"/>Yes
+            </label>
+            <br>
+            <!--This is a dynamic section in the form. This whole section can be skipped if the user does not have pets.-->
+            <p class="hiddenHelpAnimals"><B>Help: </B><i>Do you own any pets that live on this property? A pet can be any type of animal that you could classify as a pet.</i></p>
+            <h4>Are there any pets living in this dwelling?</h4>
+        <input type="radio" name="Pets in this dwelling?" id="petsYes" onclick="showHidePets()"/><b>Yes</b>
+        <input type="radio" name="Pets in this dwelling?" id="petsNo" onclick="showHidePets()"/><b>No</b>
+        <br>
+        <label class="hidden5"><b>Help?</b>
+            <input type="checkbox" id="HelpAnimalsNumberYes" onclick="showHideHelpAnimalsNumber()"/>Yes
+        </label>
+        <p class="hiddenHelpAnimalsNumber"><B>Help: </B><i>On the night of the census, how many different types of animals (pets) were housed in this property? This could be your own or another person's pet.</i></p>
+        <h4 class="hidden5">On the census night, how many types of animals were housed at or in association with the dwelling? </h4>
+            <input class="hidden5" type="number" name="Number of pets" pattern="[0-9]+" placeholder="Numbers only"/>
+        <br>
+        <label class="hidden5"><b>Help?</b>
+            <input type="checkbox" id="HelpAnimalsTypeYes" onclick="showHideHelpAnimalsType()"/>Yes
+        </label>
+        <p class="hiddenHelpAnimalsType"><B>Help: </B><i>Following on from the previous question, what type of animal was housed at this property?</i></p>
+        <h4 class="hidden5">What type of animal was this? </h4>
+            <input class="hidden5" type="text" name="Animal type" placeholder="Enter the type of animal" size="40"/>
+        <br>
+        <label class="hidden5"><b>Help?</b>
+            <input type="checkbox" id="HelpAnimalsNumberTypeYes" onclick="showHideHelpAnimalsNumberType()"/>Yes
+        </label>
+        <p class="hiddenHelpAnimalsNumberType"><B>Help: </B><i>Following on from the previous two questions. How many of this type of animal was there on the night of the census?</i></p>
+        <h4 class="hidden5">How many of this type of animal were present? </h4>
+            <input class="hidden5" type="number" name="Number of this animal present" pattern="[0-9]+" placeholder="Numbers only"/>
+        <br>
+        <div class="btn-box">
+            <button type="submit" name="next3" id="next3">Next</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <!--Accordion section (collapsible) - Part 4 "Feedback" section of form-->
+    <section id="rating">
+      <div class="accordion">
+        <div>
+            <input type="checkbox" example_accordion" id="section4" class="accordion__input">
+        <label for="section4" class="accordion__label">
+            <h1>Part 4. Feedback</h1>
+        </label>
+        <!--This section is not validated as it is feedback. The user can choose to skip this section entirely or they can fill out parts of it or they can fill the whole section out. It does not really matter how much they answer.-->
+        <div class="accordion__content">
+            <label><b>Show help for this section? </b>
+                <input type="radio" name="Help Part 4" id="Help4Yes" onclick="showHideHelp4()"/>Yes
+                <input type="radio" name="Help Part 4" id="Help4No" onclick="showHideHelp4()"/>No
+            </label>
+            <br>
+            <p class="hiddenHelpP4"><B>Help: </B><i>If you would like to give feedback on this questionnaire, then select "Yes" and continue with the following questions. If you do not wish to provide feedback then select "No" and proceed to submit the form.</i></p>
+            <h4>Would you like to give feedback on this questionnaire?</h4>
+        <input type="radio" name="Feedback given" id="feedbackYes" required="required" onclick="showHideFeedback()"/><b>Yes</b>
+        <input type="radio" name="Feedback given" id="feedbackNo" required="required" onclick="showHideFeedback()"/><b>No</b>
+        <br>
+        <h4 class="hidden6">For possible follow-up questions please supply a contact - phone number or email address:</h4>
+        <p class="hiddenHelpP4"><B>Help: </B><i>Please provide a mobile number. You must enter in a number between 1-9 in three sets of threes(Such as "111-222-333"). You must remember to insert the - between number sets. Australia area code is automatically added.</i></p>
+        <h4 class="hidden6">Mobile number (+61): </h4>
+            <input class="hidden6" type="tel" name="Mobile" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="Numbers only"/>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>Please enter in a valid email address. This must contain an @ symbol.</i></p>
+        <h4 class="hidden6">Email address: </h4>
+            <input class="hidden6" type="text" name="email" placeholder="Enter your email address" size="40"/>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>Rate the following questionnaire in terms of difficulty.</i></p>
+        <h4 class="hidden6">How difficult was this questionnaire to navigate?</h4>
+        <select class="hidden6" name="Navigation" id="navigation">
+            <option value="">Select</option>
+            <option value="Very easy">Very easy</option>
+            <option value="Easy">Easy</option>
+            <option value="OK">OK</option>
+            <option value="Hard">Hard</option>
+            <option value="Very hard">Very hard</option>
+        </select>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>Did you find it easy to enter in your information within the fields provided?</i></p>
+        <h4 class="hidden6">Were the input requirements of each question easy to follow?</h4>
+        <select class="hidden6" name="Ease of follow" id="follow">
+            <option value="">Select</option>
+            <option value="Very clear">Very clear</option>
+            <option value="Clear">Clear</option>
+            <option value="OK">OK</option>
+            <option value="Confusing">Confusing</option>
+            <option value="Very Confusing">Very Confusing</option>
+        </select>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>Did you need to use the help options at any point in the questionnaire?</i></p>
+        <h4 class="hidden6">Did you need to use help?</h4>
+        <select class="hidden6" name="Seek help?" id="help">
+            <option value="">Select</option>
+            <option value="Never">Never</option>
+            <option value="Occassionally">Occassionally</option>
+            <option value="Often">Often</option>
+            <option value="Very often">Very often</option>
+        </select>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>If you used the help - did you find the help useful at all?</i></p>
+        <h4 class="hidden6">Did you find the help useful?</h4>
+        <label class="hidden6"><input class="hidden6" type="radio" name="Was help useful?" value="Did not use it"/>Did not use it</label>
+        <br>
+        <label class="hidden6"><input class="hidden6" type="radio" name="Was help useful?" value="Yes"/>Yes</label>
+        <br>
+        <label class="hidden6"><input class="hidden6" type="radio" name="Was help useful?" value="No"/>No</label>
+        <br>
+        <p class="hiddenHelpP4"><B>Help: </B><i>If there are any further comments, please provide them in the text area below. Feel free to write as much as you want.</i></p>
+        <h4 class="hidden6">Are there any comments that you would like to make? </h4>
+            <input class="hidden6" type="textarea" name="Further comments" placeholder="Enter your comments here" size="40"/>
+        <!--Final submit button that will validate the whole form. Reset button to clear all inputs and start again.-->
+            <div class="btn-box">
+                <button type="submit" name="next4" id="next4">Next</button>
+            </div>
+        </div>
+    </section>
+    <button type="reset" name="reset">Reset</button>
+    <button type="submit" name="submit">Submit</button>
+    </form>
+  </body>
+</html>

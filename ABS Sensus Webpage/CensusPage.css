@@ -1,0 +1,143 @@
+/*Header settings - background colour as stated in the assignment.*/
+header {
+    background: #fcd6b5;
+}
+/*Body settings - background colour, text colour and font-family.*/
+body {
+    background: #fcd6b5;
+    color: #231f20;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*Progress bar -> step row settings - size, alignment, shadow and flexible display.*/
+.step-row {
+    width: 360px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: left;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+}
+/*Step column settings - Text colour and alignment*/
+.step-col {
+    width: 120px;
+    text-align: center;
+    color: #231f20;
+    position: relative;
+}
+/*Progress settings - Background (gradient), transitional effects, and height to fill the row.*/
+#progress {
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    background: linear-gradient(to right, #fcd6b5, #fac08e);
+    transition: 1s;
+}
+/*Progress after settings*/
+#progress::after {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    border-left: 20px solid #fac08e;
+}
+/*Sticky progress bar settings.*/
+.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 20em;
+}
+/*Accordion settings - Background colour, size, round edges, shadow, and font family.*/
+.accordion {
+    max-width: 50em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: 'quicksand', sans-serif;
+    background: #fac08e;
+}
+/*Accordion label (Box) settings - Cursor, transitional effects and display.*/
+.accordion__label {
+    display: block;
+    color: #231f20;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: 0.1s;
+}
+/*Accordion label and content settings - Padding.*/
+.accordion__label, 
+.accordion__content {
+    padding: 14px 20px;
+}
+/*Accordion label settings - This creates a shadow effect over the title of the accordion box when the cursor is hovered over it.*/
+.accordion__label:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+/*Accordion label settings - "V" used as a symbol to tell the user that it is a drop down menu. The V will flip its Y axis to show that it is opened or closed.*/
+.accordion__label::after {
+    content: "V";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 12px;
+    height: 6px;
+}
+/*Accordion content settings - background colour set as per the assignment requirements.*/
+.accordion__content {
+    background: #fac08e;
+    line-height: 1.6;
+    font-size: 0.85em;
+    display: none;
+}
+/*Accordion text settings - text colour, background colour, padding, and radius settings.*/
+.accordion p {
+    display: none;
+    text-align: left;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-left: 2em;
+    background: #ffff;
+    color: #231f20;
+    border-radius: 30px;
+}
+/*Accordion input settings - Used in Javascript functions to hide/show sections of the form.*/
+.accordion__input {
+    display: none;
+}
+/*Accordion input checked settings - Used in Javascript functions to hide/show sections of the form.*/
+.accordion__input:checked ~ .accordion__content {
+    display: block;
+}
+/*Accordion label check (hidden checkbox) settings - used to flip the V symbol when it is clicked.*/
+.accordion__input:checked ~ .accordion__label::after {
+    transform: translateY(-50%) rotate(0.5turn);
+}
+/*Button box settings - used for all buttons on the page.*/
+.btn-box {
+    width: 100%;
+    margin: 30px auto;
+    text-align: left;
+}
+/*Button settings - Used to generate colour and style for the buttons.*/
+button{
+    padding: 10px;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #231f20;
+    cursor: pointer;
+}
+/*Used in Javascript functions to hide/show sections of the form.*/
+.hidden {
+    display: none;
+}

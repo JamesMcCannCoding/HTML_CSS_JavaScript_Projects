@@ -1,0 +1,9 @@
+body {
+    background: #fcd6b5;
+    color: #231f20;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#text {
+    background: #fac08e;
+    padding:1em;
+}
