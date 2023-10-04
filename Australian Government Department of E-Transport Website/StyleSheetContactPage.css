@@ -1,0 +1,171 @@
+@charset "utf-8";
+/*Global settings*/
+html {
+    scroll-behavior: smooth;
+  }
+/*Global settings - text & font style*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    background: color#ffffff;
+}
+/*Global settings - personalised container boundary settings*/
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.flex-container{
+    display: flex;
+}
+/*Global settings - personalised unordered list boundary settings*/
+ul{
+    margin: 0;
+    padding: 0;
+}
+/*Header - Banner & Title section*/
+/*Logo wrapper settings*/
+.wrapper{
+    margin-bottom: 3.5em;
+    margin-left: 5.5em;
+}
+/*Site logo image settings*/
+header #logo img{
+    float: left;
+}
+/*Banner style settings*/
+header{
+    background:#0000ff;
+    color:#ffffff;
+    padding-top: 0.3em;
+    min-height: 70px;
+    border-bottom:#000075 3px solid;
+}
+/*Header (branding section) - site navigation links*/
+/*Anchor settings*/
+header a{
+    color:#ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-bottom: 1em;
+}
+/*List settings*/
+header li{
+    float: left;
+    display: inline;
+    padding: 0 2em 0 2em;
+    text-shadow: 2px 2px #060000;
+}
+/*Title text settings*/
+header #branding h1{
+    text-shadow: 2px 2px #060000;
+    margin: 0em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+}
+header #branding{
+    float: left;
+}
+/*Header navigation settings*/
+header nav{
+    float: right;
+    margin-right: 3em;
+    margin-top:-4.5em;
+}
+/*link cursor hover settings*/
+header a:hover{
+    color:#000075;
+    font-weight: bold;
+}
+/*Contact us page title & information text section*/
+/*Contact us page title settings*/
+#Title h1{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    float: center;
+    text-align: center;
+}
+/*Contact us page text settings*/
+#Title p{
+    float: center;
+    font-size: 18px;
+    padding-left: 44.5em;
+}
+/*USQ logo image settings*/
+#USQ{
+    padding-left: 5em;
+    float: center;
+    padding-bottom: 0em;
+}
+/*Image of author image settings*/
+#Selfie{
+    padding-right: 5em;
+    float: right;
+    padding-bottom: 0em;
+}
+/*Student table settings*/
+table{
+    float: center;
+    text-align: left;
+    vertical-align: bottom;
+    margin-left: 47em;
+    border: 1px solid;
+    border-collapse: collapse;
+    width: 30%;
+}
+/*Table row cursor hover effect settings*/
+tr:hover{
+    background-color: coral;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+th{
+    height: 4em;
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+}
+td{
+    padding: 1em;
+}
+/*footer section*/
+/*footer banner settings*/
+footer{
+    border-top:#000075 3px solid;
+    border-bottom:#000075 3px solid;
+    min-height: 70px;
+    padding: 3em;
+    margin-top: 3em;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    background-color:#0000ff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+/*footer text settings*/
+footer p{
+    padding-top: 3em;
+}
+/*footer anchor settings*/
+footer a{
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+}
+/*footer navigation links settings*/
+footer nav li{
+    float: center;
+    display: inline;
+    padding: 0 5em 0 5em;
+    list-style-type: none;
+}
+/*footer navigation links cursor hover settings*/
+footer a:hover{
+    color:#000075;
+    font-weight: bold;
+}

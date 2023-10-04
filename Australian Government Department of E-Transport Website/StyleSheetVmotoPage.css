@@ -1,0 +1,164 @@
+@charset "utf-8";
+/*Global settings*/
+html {
+    scroll-behavior: smooth;
+  }
+/*Global settings - text & font style*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    background: color#ffffff;
+}
+/*Global settings - personalised container boundary settings*/
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.flex-container{
+    display: flex;
+}
+/*Global settings - personalised unordered list boundary settings*/
+ul{
+    margin: 0;
+    padding: 0;
+}
+/*Header - Banner & Title section*/
+/*Logo wrapper settings*/
+.wrapper{
+    margin-bottom: 3.5em;
+    margin-left: 5.5em;
+    margin-right: 5.5em;
+}
+/*Site logo image settings*/
+header #logo img{
+    float: left;
+}
+/*Banner style settings*/
+header{
+    background:#0000ff;
+    color:#ffffff;
+    padding-top: 0.3em;
+    min-height: 70px;
+    border-bottom:#000075 3px solid;
+}
+/*Header (branding section) - site navigation links*/
+/*Anchor settings*/
+header a{
+    color:#ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-bottom: 1em;
+}
+/*List settings*/
+header li{
+    float: left;
+    display: inline;
+    padding: 0 2em 0 2em;
+    text-shadow: 2px 2px #060000;
+}
+/*Title text settings*/
+header #branding h1{
+    text-shadow: 2px 2px #060000;
+    margin: 0em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+}
+header #branding{
+    float: left;
+}
+/*Header navigation settings*/
+header nav{
+    float: right;
+    margin-right: 3em;
+    margin-top:-4.5em;
+}
+/*link cursor hover settings*/
+header a:hover{
+    color:#000075;
+    font-weight: bold;
+}
+/*Vmoto page logo section*/
+/*Vmoto page logo image settings*/
+#VmotoLogo img{
+    float: center;
+    margin-left: 50em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+/*Logo image anchor settings*/
+#AnchorText p{
+    float: center;
+    text-align: center;
+}
+/*History text settings*/
+#HistoryText p{
+    margin-left: 2em;
+}
+/*News text settings*/
+#NewsText p{
+    margin-left: 2em;
+}
+/*Typhoon text settings*/
+#DucatiText p{
+    margin-left: 2em;
+}
+/*Storm text settings*/
+#CPXText p{
+    margin-left: 2em;
+}
+/*Typhoon image settings*/
+#DucatiImage img{
+    margin-top: -2em;
+    margin-right: 10em;
+    margin-bottom: 0em;
+    float: right;
+}
+/*Storm image settings*/
+#CPXImage img{
+    margin-top: -2em;
+    margin-right: 10em;
+    padding-bottom: 2em;
+    float: right;
+}
+/*footer section*/
+/*footer banner settings*/
+footer{
+    border-top:#000075 3px solid;
+    border-bottom:#000075 3px solid;
+    min-height: 70px;
+    padding: 3em;
+    margin-top: 3em;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    background-color:#0000ff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+/*footer anchor settings*/
+footer a{
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+}
+/*footer navigation links settings*/
+footer nav li{
+    float: center;
+    display: inline;
+    padding: 0 5em 0 5em;
+    list-style-type: none;
+}
+/*footer text settings*/
+footer p{
+    padding-top: 3em;
+}
+/*footer text hover settings*/
+footer a:hover{
+    color:#000075;
+    font-weight: bold;
+}

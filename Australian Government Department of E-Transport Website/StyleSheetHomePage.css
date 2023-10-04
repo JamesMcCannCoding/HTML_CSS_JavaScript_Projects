@@ -1,0 +1,364 @@
+@charset "utf-8";
+/*Global settings*/
+html {
+    scroll-behavior: smooth;
+  }
+/*Global settings - text & font style*/
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    background: color#ffffff;
+}
+/*Global settings - personalised container boundary settings*/
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.flex-container{
+    display: flex;
+}
+/*Global settings - personalised unordered list boundary settings*/
+ul{
+    margin: 0;
+    padding: 0;
+}
+/*Header - Banner & Title section*/
+/*Logo wrapper settings*/
+.wrapper{
+    margin-bottom: 3.5em;
+    margin-left: 5.5em;
+}
+/*Site logo settings*/
+header #logo img{
+    float: left;
+}
+/*Banner style settings*/
+header{
+    background:#0000ff;
+    color:#ffffff;
+    padding-top: 0.3em;
+    min-height: 70px;
+    border-bottom:#000075 3px solid;
+}
+/*Header (branding section) - site navigation links*/
+/*Anchor settings*/
+header a{
+    color:#ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-bottom: 1em;
+}
+/*List settings*/
+header li{
+    float: left;
+    display: inline;
+    padding: 0 2em 0 2em;
+    text-shadow: 2px 2px #060000;
+}
+/*Title text settings*/
+header #branding h1{
+    text-shadow: 2px 2px #060000;
+    margin: 0em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+}
+header #branding{
+    float: left;
+}
+/*Header navigation settings*/
+header nav{
+    float: right;
+    margin-right: 3em;
+    margin-top:-4.5em;
+}
+header a:hover{
+    color:#000075;
+    font-weight: bold;
+}
+/*Image showcase section*/
+/*Main image of showcase settings*/
+#showcase{
+    text-shadow: 2px 2px #060000;
+    min-height: 400px;
+    background: linear-gradient( rgba(0, 0, 0, 0.59), rgba(0, 0, 0, 0.59) ),url('https://www.goodnewsfinland.com/wp-content/uploads/2018/10/Evehicles_2000x1125.jpg') no-repeat 0 -400px;
+    text-align: center;
+    padding-left: 0em;
+    color:#ffffff;
+    border-bottom:#000075 3px solid;
+}
+/*Image showcase Title text and paragraph text settings*/
+#showcase h1{
+    text-align: center;
+    margin-top: 100px;
+    font-size: 55px;
+    margin-bottom: 3em;
+}
+#showcase p{
+    margin-bottom: 7em;
+}
+/*Image showcase anchor settings*/
+#showcase a{
+    font-size: 18px;
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    float: center;
+}
+#showcase a:hover{
+    color:#000075;
+    font-weight: bold;
+    cursor:pointer;
+}
+/*About us links - banner and navigation links section*/
+/*About us links banner style settings*/
+#quickLinks{
+    background:#0000ff;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    min-height: 70px;
+    border-bottom:#000075 3px solid;
+    text-decoration: none;
+    font-size: 16px;
+    float: center;
+    text-align: center;
+    border-bottom:#000075 3px solid;
+}
+/*Nav links text settings*/
+#quickLinks h2{
+    text-transform: capitalize;
+    text-align: center;
+    padding-bottom: 1em;
+}
+/*Nav links anchor settings*/
+#quickLinks a{
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    padding: 0 5em 0 5em;
+}
+/*Nav links list settings*/
+#quickLinks nav li{
+    float: center;
+    display: inline;
+    text-align: center;
+}
+/*Nav links cursor hover styling settings*/
+#quickLinks a:hover{
+    color:#000075;
+    font-weight: bold;
+    cursor:pointer;
+}
+/*"Why should you make the switch to electric?" section*/
+/*Title and Text settings*/
+#WhySwitch h2{
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 50px;
+}
+#WhySwitch p{
+    float: center;
+    text-align: center;
+    padding: 5px;
+}
+/*Ordered list settings*/
+#WhySwitch ol li{
+    list-style-type: circle;
+    
+    text-align: left;
+    margin-top: 5em;
+    margin-left:25em;
+}
+#WhySwitch h1{
+    text-align: center;
+    padding-top: 2em;
+    margin-top: 10em;
+    padding-bottom: 50px;
+}
+/*Tesla Showcase section*/
+/*Tesla logo image settings*/
+#TeslaLogo img{
+    display: flex;
+    float: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 50px;
+}
+/*Tesla title text settings*/
+#TeslaLogo h2{
+    text-align: center;
+    margin-bottom: 0px;
+}
+/*Tesla Car image settings*/
+#TeslaImage img{
+    display: flex;
+    float: right;
+    margin-right: 12em;
+    margin-top: 12em;
+    margin-bottom: 0px;
+}
+/*Tesla text settings*/
+#TeslaText p{
+    margin-top: 10px;
+    margin-left: 10em;
+    text-align: left;
+}
+/*Vector Showcase section*/
+/*Vector logo image settings*/
+#VectorLogo img{
+    float: left;
+    margin-bottom: 0em;
+    margin-right: 50px;
+}
+/*Vector Title text settings*/
+#VectorLogo h2{
+    text-align: center;
+}
+/*Vector motorbike image settings*/
+#VectorImage img{
+    float:right;
+    margin-top: 8em;
+    margin-bottom: 0px;
+    margin-right: 15em;
+}
+/*Vector text settings*/
+#VectorText p{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 10em;
+}
+/*Vmoto Showcase section*/
+/*Vmoto logo image settings*/
+#VmotoLogo img{
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+/*Vmoto title text settings*/
+#VmotoLogo h2{
+    text-align: center;
+    margin-bottom: 0px;
+}
+/*Vmoto scooter image settings*/
+#VmotoImage img{
+    float: right;
+    margin-top: 8em;
+    margin-bottom: 50px;
+    margin-right: 15em;
+}
+/*Vmoto text settings*/
+#VmotoText p{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 10em;
+}
+/*LDV Showcase section*/
+/*LDV logo image settings*/
+#LdvLogo img{
+    float: left;
+    margin-left: 2.5em;
+    margin-bottom: 50px;
+}
+/*LDV title text settings*/
+#LdvLogo h2{
+    text-align: center;
+}
+/*LDV Van image settings*/
+#LdvImage img{
+    float: right;
+    margin-top: 10em;
+    margin-bottom: 50px;
+    margin-right: 14em;
+}
+/*LDV main paragraph text settings*/
+#LdvText p{
+    text-align: left;
+    margin-left: 10em;
+}
+/*Volvo Showcase section*/
+/*Volvo logo image settings*/
+#VolvoLogo img{
+    float: left;
+    margin-bottom: 50px;
+    margin-left: 0px;
+}
+/*Volvo title text settings*/
+#VolvoLogo h2{
+    text-align: center;
+}
+/*Volvo truck image settings*/
+#VolvoImage img{
+    float: right;
+    margin-top: 5em;
+    margin-bottom: 50px;
+    margin-right: 15em;
+}
+/*Volvo text settings*/
+#VolvoText p{
+    text-align: left;
+    margin-left: 10em;
+}
+/*Australian Government Department of E-transport description.*/
+/*About us section*/
+/*About us title text settings*/
+#AboutUs h1{
+    text-align: center;
+    padding-top: 10em;
+    padding-bottom: 2em;
+}
+/*About us main text settings*/
+#AboutUs h3{
+    text-align: left;
+    margin-top: 8em;
+}
+/*About us un ordered list settings*/
+#AboutUs ul li{
+    list-style-type: circle;
+    float: center;
+    text-align: left;
+    margin-top: 1em;
+}
+/*footer section*/
+/*footer banner settings*/
+footer{
+    border-top:#000075 3px solid;
+    border-bottom:#000075 3px solid;
+    min-height: 70px;
+    padding: 3em;
+    margin-top: 3em;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+    background-color:#0000ff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+/*footer text settings*/
+footer p{
+    padding-top: 3em;
+}
+/*footer anchor settings*/
+footer a{
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 2px 2px #060000;
+}
+/*footer navigation links list settings*/
+footer nav li{
+    float: center;
+    display: inline;
+    padding: 0 5em 0 5em;
+    list-style-type: none;
+}
+/*footer navigation links cursor hover settings*/
+footer a:hover{
+    color:#000075;
+    font-weight: bold;
+}
