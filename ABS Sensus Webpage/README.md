@@ -1,2 +1,1 @@
-# 2022-S2-CSC2406-A2-James-McCann
-
+This is a project that is intended to immitate an Australian government survey website. 
